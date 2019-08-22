@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "rapidcsv.h"
+#include "./rapidcsv.h"
 
 int main()
 {
@@ -32,20 +32,32 @@ for (int i = 0; i < doc.GetRowCount(); i++)
 	std::string date = dates.at(i);
 	std::map<std::string, int>::iterator it;
 	std::map<std::string, std::string>::iterator it_date;
-	it_date = violation_dates.find(cat);
+	it_date = earliest.find(cat);
 	it = count.find(cat);	
 	if (it != count.end())
 		{
 		count[cat] += 1;
-		if (date.compare(violation_dates[cat]) < 0)
+		//if (date.compare(violation_dates[cat]) < 0)
+		//	{
+		//	earliest[cat] = date;
+		//	}
+		//
+		}
+	else
+		count[cat] = 1;
+    // For earliest date
+    // it_date
+
+	if (it_date != earliest.end())
+		{
+		if (date.compare(it_date->second) < 0)
 			{
 			earliest[cat] = date;
 			}
 		
 		}
 	else
-		count[cat] = 1;
-
+			earliest[cat] = date;
 
 	
 }
