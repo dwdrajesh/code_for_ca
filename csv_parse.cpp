@@ -7,12 +7,6 @@ int main()
 {
   rapidcsv::Document doc("C4C-dev-challenge-2018.csv");
 
-//  std::vector<float> close = doc.GetColumn<float>("Close");
-//  std::cout << "Read " << close.size() << " values." << std::endl;
-//
-//  long long volume = doc.GetCell<long long>("Volume", "2017-02-22");
-//  std::cout << "Volume " << volume << " on 2017-02-22." << std::endl;
-
 std::vector<std::string> violation_categories = doc.GetColumn<std::string>("violation_category");
 std::vector<std::string> violation_dates = doc.GetColumn<std::string>("violation_date");
 std::vector<std::string> dates;
@@ -36,23 +30,17 @@ for (int i = 0; i < doc.GetRowCount(); i++)
 	it = count.find(cat);	
 	if (it != count.end())
 		{
-		count[cat] += 1;
-		//if (date.compare(violation_dates[cat]) < 0)
-		//	{
-		//	earliest[cat] = date;
-		//	}
-		//
+			count[cat] += 1;
 		}
 	else
 		count[cat] = 1;
-    // For earliest date
-    // it_date
 
+    // For earliest date
 	if (it_date != earliest.end())
 		{
 		if (date.compare(it_date->second) < 0)
 			{
-			earliest[cat] = date;
+				earliest[cat] = date;
 			}
 		
 		}
